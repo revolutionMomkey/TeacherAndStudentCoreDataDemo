@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="21G217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Student" representedClassName=".Student" syncable="YES" codeGenerationType="class">
+        <attribute name="classSubject" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="stuLearnFromTeacher" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="Teacher" inverseName="teacherTeahStudents" inverseEntity="Teacher"/>
+    </entity>
+    <entity name="Teacher" representedClassName=".Teacher" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="subject" attributeType="String"/>
+        <relationship name="teacherTeahStudents" optional="YES" toMany="YES" deletionRule="Deny" ordered="YES" destinationEntity="Student" inverseName="stuLearnFromTeacher" inverseEntity="Student"/>
+        <relationship name="teacherUseWorkBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorkBook" inverseName="bookToTeacher" inverseEntity="WorkBook"/>
+    </entity>
+    <entity name="WorkBook" representedClassName=".WorkBook" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="bookToTeacher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teacher" inverseName="teacherUseWorkBook" inverseEntity="Teacher"/>
+    </entity>
+</model>
